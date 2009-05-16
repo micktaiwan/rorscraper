@@ -1,0 +1,84 @@
+/* standard elements */
+* {
+	margin:  0;
+	padding: 0;
+}
+
+a {
+	color: #00A;
+}
+
+a:hover {
+	color: #55F;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.content {
+  padding: 10px
+}
+
+.menu {
+  background: #333;
+  font-size:1.2em;
+  color: #AAA;
+}
+
+.menu .item {
+  padding: 0 10px 0 10px;
+  display: inline;
+  }
+  
+p,cite,code,ul {
+	padding-bottom: 1.2em;
+}
+
+h1 {
+	font-size: 1.4em;
+	margin-bottom: 4px;
+}
+
+code {
+	border: 1px solid #CCC;
+	border-left: 6px solid #39F;
+	color: #555;
+	display: block;
+	font: normal 1.1em;
+	margin-bottom: 12px;
+	padding: 8px 10px;
+	white-space: pre;
+}
+
+cite {
+	background: url(/images/quote.gif) no-repeat;
+	color: #666;
+	display: block;
+	font: normal 1.3em;
+	padding-left: 28px;
+}
+
+h1,h2,h3 {
+	color: #06C;
+	padding-top: 6px;
+}
+
+/* misc */
+.clearer {
+	clear: both;
+}
+
+/* footer */
+.footer {
+	color: #222;
+	font-size: 0.9em;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+}
+
+.footer a {
+	text-decoration: none;
+}
+
