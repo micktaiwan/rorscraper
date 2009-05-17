@@ -1,7 +1,8 @@
 require 'open-uri'
 
 class Scrap < ActiveRecord::Base
-
+  attr_readonly :page
+  
   def do_scraping!
     begin
       open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}",

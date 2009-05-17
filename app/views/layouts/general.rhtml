@@ -19,11 +19,13 @@
 <body>
 
 <div class="menu">
-<div class="item">dashboard</div>
-<div class="item">profile</div>
+<div class="item"><a href="/">dashboard</a></div>
+<div class="item"><a href="/profile">profile</a></div>
+<div class="item"><a href="/account/logout">logout</a></div>
 </div>
 
 <div class="content">
+<div id="info"><%= flash[:info] %></div>
 <%= yield %>
 </div>
 
