@@ -26,9 +26,23 @@ body {
   color: #AAA;
 }
 
+img {
+  border: 0;
+}
+
 .menu .item {
   padding: 0 10px 0 10px;
   display: inline;
+  }
+
+.menu .item a {
+  color: #AAA;
+	text-decoration: none;
+  }
+
+.menu .item a:hover {
+  color: #FFF;
+	text-decoration: none;
   }
   
 p,cite,code,ul {
@@ -76,9 +90,18 @@ h1,h2,h3 {
 	text-align: center;
 	position: absolute;
 	bottom: 0;
+	border-top: 1px solid #AAA;
 }
 
 .footer a {
 	text-decoration: none;
 }
+
+label {
+    width: 120px;
+    float: left;
+    text-align: right;
+    margin-right: 4px;
+    display: block
+  }
 

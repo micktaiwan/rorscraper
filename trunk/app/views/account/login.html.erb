@@ -1,0 +1,29 @@
+    <h1><%= I18n.t :login %></h1>
+    <%=link_to(I18n.t(:new_account), {:controller=>'account', :action=>'signup'})%><br/>
+    <br/>
+     <% form_tag :controller=>'account', :action=> "login" do %>
+      <label class="small"><%= I18n.t :email %>:</label>
+      <input type="text" name="user[email]" id="user_email" size="10" value=""/><br/>
+      <label class="small"><%= I18n.t :pwd %>:</label>
+      <input type="password" name="user[password]" id="user_password" size="10"/><br/>
+      <label class="small">&nbsp;</label>
+      <input type="submit" name="login" value="<%= I18n.t :login %> &#187;" class="submitbutton" />
+      <% if @message -%><div id="notice"><%= @message %></div><% end %>
+    <% end -%>
+
+
+<h2><%= I18n.t(:title_lost_pwd) %></h2>
+
+<% form_remote_tag(:update =>'status',:url => { :action => :send_reset_email }, :loading=>"$('status').innerHTML='Sending...'") do -%>
+<label for="email">Email:</label>
+<%= text_field_tag :email -%>
+<%= submit_tag "Send &#187;" -%>
+<% end -%>
+
+<div id='status'></div>
+
+
+<h2><%= I18n.t(:about) %></h2>
+
+<%= I18n.t(:msg_about) %>
+
