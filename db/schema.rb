@@ -18,6 +18,19 @@ ActiveRecord::Schema.define(:version => 0) do
     t.text      "page"
     t.timestamp "updated_at",                                           :null => false
     t.timestamp "created_at",                                           :null => false
+    t.text      "error"
+    t.string    "name",       :limit => 30,                             :null => false
+    t.integer   "public",                    :default => 0,             :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string    "name",       :limit => 30
+    t.string    "password",   :limit => 40
+    t.string    "email",      :limit => 30, :null => false
+    t.string    "lost_key",   :limit => 16
+    t.timestamp "last_login",               :null => false
+    t.timestamp "created_at",               :null => false
+    t.timestamp "updated_at",               :null => false
   end
 
 end
