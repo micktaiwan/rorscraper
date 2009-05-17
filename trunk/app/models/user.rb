@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 # this model expects a certain database layout and its based on the name/login pattern. 
 class User < ActiveRecord::Base
-  has_many :scraps
+  has_many :scraps, :select => 'id,url,xpath,name'
   
   #validates_uniqueness_of :email, :case_sensitive => false
   validates_presence_of :password, :password_confirmation, :if => :validate_password_confirmation?
