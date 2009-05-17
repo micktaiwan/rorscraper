@@ -1,0 +1,8 @@
+# call this script in a cron task:
+# MAILTO="admin@yoursite.com"
+# 0 0 * * 0 cd /home/protask/scraper/script && /usr/local/bin/ruby runner -e production scrap
+
+Scrap.find(:all).each { |s|
+  s.do_scraping!
+  }
+
