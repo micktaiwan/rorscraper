@@ -105,3 +105,7 @@ label {
     display: block
   }
 
+.date {
+  font-size:0.9em;
+  color:#AAA;
+}
