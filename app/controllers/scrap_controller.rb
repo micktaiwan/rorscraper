@@ -28,4 +28,12 @@ class ScrapController < ApplicationController
     render(:text=>'deleted')
   end
 
+  def scrap
+    id = params['id']
+    @scrap = Scrap.find(id)
+    @scrap.do_scraping!
+    render(:partial=>'scrap')
+  end
+
+  
 end

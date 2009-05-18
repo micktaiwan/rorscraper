@@ -9,28 +9,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20090518163955) do
 
   create_table "scraps", :force => true do |t|
-    t.string    "url",                                                  :null => false
-    t.string    "xpath",      :limit => 100, :default => "/html/title", :null => false
-    t.integer   "user_id",                                              :null => false
-    t.text      "page"
-    t.timestamp "updated_at",                                           :null => false
-    t.timestamp "created_at",                                           :null => false
-    t.text      "error"
-    t.string    "name",       :limit => 30,                             :null => false
-    t.integer   "public",                    :default => 0,             :null => false
+    t.string   "url",                                                  :null => false
+    t.string   "xpath",      :limit => 100, :default => "/html/title", :null => false
+    t.integer  "user_id",                                              :null => false
+    t.text     "page"
+    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                           :null => false
+    t.text     "error"
+    t.string   "name",       :limit => 30,                             :null => false
+    t.integer  "public",                    :default => 0,             :null => false
+    t.text     "scrap"
   end
 
   create_table "users", :force => true do |t|
-    t.string    "name",       :limit => 30
-    t.string    "password",   :limit => 40
-    t.string    "email",      :limit => 30, :null => false
-    t.string    "lost_key",   :limit => 16
-    t.timestamp "last_login"
-    t.timestamp "created_at",               :null => false
-    t.timestamp "updated_at",               :null => false
+    t.string   "name",       :limit => 30
+    t.string   "password",   :limit => 40
+    t.string   "email",      :limit => 30, :null => false
+    t.string   "lost_key",   :limit => 16
+    t.datetime "last_login"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
 end
