@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string    "password",   :limit => 40
     t.string    "email",      :limit => 30, :null => false
     t.string    "lost_key",   :limit => 16
-    t.timestamp "last_login",               :null => false
+    t.timestamp "last_login"
     t.timestamp "created_at",               :null => false
     t.timestamp "updated_at",               :null => false
   end

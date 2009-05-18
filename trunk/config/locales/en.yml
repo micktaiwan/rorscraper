@@ -14,7 +14,7 @@ en:
   signup: "Signup"
   name: "Name"
   expl_name: "Your real name"
-  expl_email: "Your email, for scraping alerts"
+  expl_email: "Your email is your login, and is also used for scraping alerts (configurable)"
   pwd_confirm: "Confirmation"
   expl_pwd_confirm: "type your password again"
   msg_login_KO: "Login failed"
