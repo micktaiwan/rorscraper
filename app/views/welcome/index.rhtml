@@ -1,5 +1,12 @@
 <h1>Your scraps</h1>
 
-<%= render(:partial=>'scraps/scrap', :collection=>@scraps) %>
+<%= link_to_remote(I18n.t('add_scrap'),
+	:url => { :controller=>'scrap', :action => "add"},
+	:update => { :success => "new", :failure => "info" })
+%>
 
+<div id="new"></div>
 
+<div id="scrap_list">
+<%= render(:partial=>'scrap/scrap', :collection=>@scraps) %>
+</div>
