@@ -6,12 +6,11 @@ class Scrap < ActiveRecord::Base
   
   def do_scraping!
     begin
-      #open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}",
-      #  "From" => "protask@protaskm.com",
-      #  "Referer" => "http://scraper.protaskm.com/") { |f|
-      #  self.page = f.read
-      #  }
-      puts 'begin'
+      open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}",
+        "From" => "protask@protaskm.com",
+        "Referer" => "http://scraper.protaskm.com/") { |f|
+        self.page = f.read
+        }
       doc = Hpricot(self.page)
       element = doc.search(self.xpath)
       if element == nil
@@ -30,13 +29,10 @@ class Scrap < ActiveRecord::Base
         self.error = ''
       end
       save!
-      puts 'ok'
     rescue Exception => e
-      puts e.message
       self.error = "Scraping failed: "+e.message
       save!
     end
-    puts 'end'
   end
   
 private
