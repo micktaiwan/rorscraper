@@ -6,33 +6,44 @@ class Scrap < ActiveRecord::Base
   
   def do_scraping!
     begin
-      open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}",
-        "From" => "protask@protaskm.com",
-        "Referer" => "http://scraper.protaskm.com/") { |f|
-        self.page = f.read
-        }
+      #open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}",
+      #  "From" => "protask@protaskm.com",
+      #  "Referer" => "http://scraper.protaskm.com/") { |f|
+      #  self.page = f.read
+      #  }
+      puts 'begin'
       doc = Hpricot(self.page)
-      element = (doc/self.xpath)
-      if element.class == Array
-        self.scrap = element.first.inner_html
-        self.error = 'the given xpath returned several elements'
+      element = doc.search(self.xpath)
+      if element == nil
+        self.scrap = ''
+        self.error = 'element not found'
+      elsif element.class == Hpricot::Elements
+        if(element.size == 0)        
+          self.scrap = ''
+          self.error = 'element not found'
+        else
+          self.scrap = element[0].inner_html
+          self.error = 'the given xpath returned several elements'
+        end
       else
         self.scrap = element.inner_html
-        self.error= ''
+        self.error = ''
       end
       save!
+      puts 'ok'
     rescue Exception => e
+      puts e.message
       self.error = "Scraping failed: "+e.message
       save!
     end
+    puts 'end'
   end
   
-  private
+private
   
   def before
     self.url = "http://"+self.url if self.url[0..6] != "http://"
   end
-  
 
 end
 

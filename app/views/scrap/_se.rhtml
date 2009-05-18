@@ -1,4 +1,4 @@
-<div class="edit_box">
+<div class="edit_box" id='edit_box'>
 <% remote_form_for :scrap, @scrap, :url => { :action =>'post', :id=>@scrap.id}, :update=>'scrap_list', :html => { :method => :put } do |f| %>
 <label for='scrap_name'><%=I18n.t('name')%>:</label><%= f.text_field(:name) %><br/>
 <label for='scrap_url'><%=I18n.t('url')%>:</label><%= f.text_field(:url) %><br/>
