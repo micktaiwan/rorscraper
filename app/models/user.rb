@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     find(:first, :conditions=>["email=? AND password=?", email, sha1(pass)])
   end  
   
+  def scraps
+   Scrap.find(:all, :conditions=>["user_id=?",self.id], :order=>"id desc")
+  end
+  
   protected
   
   def self.sha1(pass)
