@@ -14,19 +14,19 @@ class Scrap < ActiveRecord::Base
       doc = Hpricot(self.page)
       element = doc.search(self.xpath)
       if element == nil
-        self.scrap = ''
-        self.error = 'element not found'
+        set_not_found
       elsif element.class == Hpricot::Elements
         if(element.size == 0)        
-          self.scrap = ''
-          self.error = 'element not found'
+          set_not_found
         else
           self.scrap = element[0].inner_html
           self.error = 'the given xpath returned several elements'
+          set_scrap_time
         end
       else
         self.scrap = element.inner_html
         self.error = ''
+        set_scrap_time
       end
       save!
     rescue Exception => e
@@ -39,6 +39,15 @@ private
   
   def before
     self.url = "http://"+self.url if self.url[0..6] != "http://"
+  end
+  
+  def set_not_found
+    self.scrap = ''
+    self.error = 'element not found'
+  end
+  
+  def set_scrap_time
+    self.scrap_time = Time.now
   end
 
 end

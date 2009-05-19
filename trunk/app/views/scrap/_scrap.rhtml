@@ -1,6 +1,6 @@
 <div id="scrap_<%=scrap.id%>">
 <b><%=scrap.name%></b>
-<span class="date"><%=scrap.updated_at%></span>
+<span class="date"><%=scrap.scrap_time%></span>
 <%=scrap.page.to_s.size%> bytes
 <b><%=scrap.error%></b>
 <%=link_to_remote(I18n.t('edit'), :url=>{:controller=>'scrap', :action=>'edit', :id=>scrap.id}, :update=>'scrap_'+scrap.id.to_s) %>
