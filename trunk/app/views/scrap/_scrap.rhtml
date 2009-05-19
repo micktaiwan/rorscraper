@@ -1,13 +1,20 @@
-<div id="scrap_<%=scrap.id%>">
-<b><%=scrap.name%></b>
-<span class="date">last scrap: <%= time_ago_in_words(scrap.scrap_time) %> ago</span>
-<%=scrap.page.to_s.size%> bytes
-<b><%=scrap.error%></b>
+<div class="scrap" id="scrap_<%=scrap.id%>">
+<div class="title"><%=scrap.name%></div>
 <%=link_to_remote(I18n.t('edit'), :url=>{:controller=>'scrap', :action=>'edit', :id=>scrap.id}, :update=>'scrap_'+scrap.id.to_s) %>
-<%=link_to_remote(I18n.t('delete'), :url=>{:controller=>'scrap', :action=>'delete', :id=>scrap.id}, :confirm=>'delete?', :update=>'scrap_'+scrap.id.to_s) %>
+<%=link_to_remote(I18n.t('delete'), :url=>{:controller=>'scrap', :action=>'delete', :id=>scrap.id}, :confirm=>'delete?', :success=>"$('scrap_#{scrap.id.to_s}').blindUp()") %>
 <%=link_to(I18n.t('ext_link'), url_for(scrap.url)) %>
 <%=link_to_remote(I18n.t('scrap'), :url=>{:controller=>'scrap', :action=>'scrap', :id=>scrap.id}, :update=>'scrap_'+scrap.id.to_s) %>
 <br/>
-<%= scrap.scrap %>
+<span class="date">
+<%if(scrap.scrap_time != nil)%>
+last scrap: <%= time_ago_in_words(scrap.scrap_time) %> ago
+<%else%>
+never scraped
+<%end%>
+</span>
+<%=scrap.page.to_s.size/1024%> Kb
+<b><%=scrap.error%></b>
+<br/>
+<code><%= h scrap.scrap %></code>
 </div>
 

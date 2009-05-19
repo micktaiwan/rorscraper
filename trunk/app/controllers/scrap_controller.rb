@@ -19,13 +19,12 @@ class ScrapController < ApplicationController
     else
       Scrap.find(id).update_attributes(params['scrap'])
     end
-    @scraps = Scrap.find(:all, :conditions=>["user_id=?",session['user'].id])
-    render(:partial=>'scrap', :collection=>@scraps)
+    render(:partial=>'scrap', :collection=>session['user'].scraps)
   end
   
   def delete
     Scrap.delete(params['id'])
-    render(:text=>'deleted')
+    render(:nothing=>true)
   end
 
   def scrap

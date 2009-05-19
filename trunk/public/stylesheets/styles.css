@@ -6,10 +6,11 @@
 
 a {
 	color: #00A;
+	text-decoration: none;
 }
 
 a:hover {
-	color: #55F;
+	color: #A00;
 }
 
 body {
@@ -55,9 +56,10 @@ h1 {
 }
 
 code {
-	border: 1px solid #CCC;
+	border: 0px solid #CCC;
 	border-left: 6px solid #39F;
 	color: #555;
+	background:#FFF;
 	display: block;
 	font: normal 1.1em;
 	margin-bottom: 12px;
@@ -113,5 +115,24 @@ label {
 .edit_box {
   padding: 5px 0 5px 0;
   border: 1px solid #ABC;
-  background: #DEF
+  background: #DEF;
+}
+
+.scrap {
+  padding: 5px;
+  margin: 2px;
+  border-bottom: 1px solid #ABC;
+  background: #EEE;
+}
+
+.scrap .title {
+  font-size: 1.2em;
+  display: inline;
+  color:#830;
+}
+
+.scrap a {
+	border: 1px solid #888;
+	padding: 0 2px 0 2px;
+	background: #DDD;
 }
