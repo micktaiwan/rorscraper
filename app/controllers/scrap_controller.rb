@@ -29,9 +29,9 @@ class ScrapController < ApplicationController
 
   def scrap
     id = params['id']
-    @scrap = Scrap.find(id)
-    @scrap.do_scraping!
-    render(:partial=>'scrap')
+    @scrapd = Scrap.find(id)
+    @scrapd.do_scraping!
+    render(:partial=>'scrapd')
   end
 
   
