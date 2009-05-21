@@ -14,4 +14,7 @@ never scraped
 <%=scrapd.page.to_s.size/1024%> Kb
 <b><%=scrapd.error%></b>
 <br/>
-<code><%= h scrapd.scrap %></code>
+<% if scrapd.pre %>
+<code><%= h scrapd.scrap %></code><% else %>
+<%= scrapd.scrap %>
+<% end %>
