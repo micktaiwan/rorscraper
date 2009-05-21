@@ -7,6 +7,7 @@
 <label for='scrap_name'><%=I18n.t('name')%>:</label><%= f.text_field(:name) %><br/>
 <label for='scrap_url'><%=I18n.t('url')%>:</label><%= f.text_field(:url) %><br/>
 <label for='scrap_xpath'><%=I18n.t('xpath')%>:</label><%= f.text_field(:xpath) %><br/>
+<label for='scrap_pre'>display code</label><%= f.check_box(:pre) %><br/>
 <label for='scrap_submit'>&nbsp;</label><%= f.submit I18n.t('submit') %><br/>
 <% end %>
 </div>
