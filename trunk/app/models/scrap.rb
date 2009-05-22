@@ -2,6 +2,7 @@ require 'open-uri'
 require 'hpricot'
 
 class Scrap < ActiveRecord::Base
+  has_many :histories
   before_save :before
   
   def do_scraping!
@@ -18,15 +19,13 @@ class Scrap < ActiveRecord::Base
       elsif element.class == Hpricot::Elements
         if(element.size == 0)        
           set_not_found
+        elsif(element.size == 1)
+          save_scrap(element.inner_html, '1 element')
         else
-          self.scrap = element[0].inner_html
-          self.error = 'the given xpath returned several elements'
-          set_scrap_time
+          save_scrap(element[0].inner_html, 'the given xpath returned several elements')
         end
       else
-        self.scrap = element.inner_html
-        self.error = ''
-        set_scrap_time
+        save_scrap(element.inner_html, 'normal')
       end
       save!
     rescue Exception => e
@@ -48,6 +47,14 @@ private
   
   def set_scrap_time
     self.scrap_time = Time.now
+  end
+  
+  def save_scrap(value, error)
+    value = value.strip
+    self.scrap = value
+    self.error = error
+    set_scrap_time
+    History.create(:scrap_id=>self.id, :scrap=>value)
   end
 
 end

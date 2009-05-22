@@ -11,6 +11,8 @@ last scrap: <%= time_ago_in_words(scrapd.scrap_time) %> ago
 never scraped
 <%end%>
 </span>
+
+<%=scrapd.histories.size%> scraps
 <%=scrapd.page.to_s.size/1024%> Kb
 <b><%=scrapd.error%></b>
 <br/>
