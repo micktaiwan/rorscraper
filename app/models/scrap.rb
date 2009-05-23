@@ -4,6 +4,11 @@ require 'hpricot'
 class Scrap < ActiveRecord::Base
   has_many :histories
   before_save :before
+  belongs_to :user
+  
+  def last_value
+    
+  end
   
   def do_scraping!
     begin
@@ -20,12 +25,12 @@ class Scrap < ActiveRecord::Base
         if(element.size == 0)        
           set_not_found
         elsif(element.size == 1)
-          save_scrap(element.inner_html, '1 element')
+          add_scrap(element.inner_html, '')
         else
-          save_scrap(element[0].inner_html, 'the given xpath returned several elements')
+          add_scrap(element[0].inner_html, 'the given xpath returned several elements')
         end
-      else
-        save_scrap(element.inner_html, 'normal')
+      else # should not happen
+        add_scrap(element.inner_html, 'element.class != Hpricot:Elements')
       end
       save!
     rescue Exception => e
@@ -45,16 +50,13 @@ private
     self.error = 'element not found'
   end
   
-  def set_scrap_time
-    self.scrap_time = Time.now
-  end
-  
-  def save_scrap(value, error)
+  def add_scrap(value, error)
     value = value.strip
+    self.last_scrap = self.scrap
     self.scrap = value
     self.error = error
-    set_scrap_time
-    History.add(self.id, value)
+    self.scrap_time = Time.now
+    History.create(:scrap_id=>self.id, :scrap=>value) if self.scrap != self.last_scrap
   end
 
 end

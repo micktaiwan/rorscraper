@@ -1,8 +1,12 @@
 # call this script in a cron task:
 # MAILTO="admin@yoursite.com"
-# 0 0 * * 0 cd /home/protask/scraper/script && /usr/local/bin/ruby runner -e production scrap
+# 0 0 * * 0 cd /home/protask/scraper/current/script && /usr/local/bin/ruby runner -e production scrap
 
 Scrap.find(:all).each { |s|
-  s.do_scraping!
+  if Time.now - 1.hour >= s.scrap_time 
+    #puts s.name
+    s.do_scraping! 
+    AppMailer.deliver_scrap(s) if s.email_on_change and s.scrap != s.last_scrap and s.histories.size > 1
+  end
   }
 

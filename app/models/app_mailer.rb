@@ -9,5 +9,14 @@ class AppMailer < ActionMailer::Base
     @headers    = {}
   end
 
+  def scrap(scrap)
+    @subject    = "[Scraper] #{scrap.name} changed"
+    @body["scrap"] = scrap
+    @recipients = scrap.user.email
+    @from       = 'protask@protaskm.com'
+    @sent_on    = Time.now
+    @headers    = {}
+  end
+
 end
 
