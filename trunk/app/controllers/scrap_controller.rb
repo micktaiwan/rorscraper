@@ -34,5 +34,5 @@ class ScrapController < ApplicationController
     render(:partial=>'scrapd')
   end
 
-  
 end
+
