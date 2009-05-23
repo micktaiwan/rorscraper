@@ -29,6 +29,7 @@ class AccountController < ApplicationController
     case request.method
       when :post
         @user = User.new(params['user'])
+	@user.last_login = DateTime.now()
         flash['error']  = "Name already taken" and return if User.find_by_name(@user.name)
         flash['error']  = "Email already taken" and return if User.find_by_email(@user.email)
         flash['error']  = ""

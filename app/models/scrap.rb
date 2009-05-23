@@ -54,7 +54,7 @@ private
     self.scrap = value
     self.error = error
     set_scrap_time
-    History.create(:scrap_id=>self.id, :scrap=>value)
+    History.add(self.id, value)
   end
 
 end
