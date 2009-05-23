@@ -62,7 +62,7 @@ code {
 	color: #555;
 	background:#FFF;
 	display: block;
-	font: normal 1.1em;
+	font: 1.1em;
 	margin-bottom: 12px;
 	padding: 8px 10px;
 	white-space: pre;
@@ -72,7 +72,7 @@ cite {
 	background: url(/images/quote.gif) no-repeat;
 	color: #666;
 	display: block;
-	font: normal 1.3em;
+	font: 1.3em;
 	padding-left: 28px;
 }
 

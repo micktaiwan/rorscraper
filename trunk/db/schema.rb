@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090523191322) do
+ActiveRecord::Schema.define(:version => 20090523213741) do
 
   create_table "histories", :force => true do |t|
     t.integer  "scrap_id"
@@ -51,18 +51,20 @@ ActiveRecord::Schema.define(:version => 20090523191322) do
   add_index "rail_stats", ["subdomain"], :name => "index_rail_stats_on_subdomain"
 
   create_table "scraps", :force => true do |t|
-    t.string    "url",                                                       :null => false
-    t.string    "xpath",      :limit => 100,      :default => "/html/title", :null => false
-    t.integer   "user_id",                                                   :null => false
-    t.binary    "page",       :limit => 16777215
-    t.timestamp "updated_at",                                                :null => false
-    t.timestamp "created_at",                                                :null => false
+    t.string    "url",                                                            :null => false
+    t.string    "xpath",           :limit => 100,      :default => "/html/title", :null => false
+    t.integer   "user_id",                                                        :null => false
+    t.binary    "page",            :limit => 16777215
+    t.timestamp "updated_at",                                                     :null => false
+    t.timestamp "created_at",                                                     :null => false
     t.text      "error"
-    t.string    "name",       :limit => 30,                                  :null => false
-    t.integer   "public",                         :default => 0,             :null => false
+    t.string    "name",            :limit => 30,                                  :null => false
+    t.integer   "public",                              :default => 0,             :null => false
     t.text      "scrap"
     t.datetime  "scrap_time"
     t.boolean   "pre"
+    t.text      "last_scrap"
+    t.boolean   "email_on_change",                     :default => false
   end
 
   create_table "search_terms", :force => true do |t|
