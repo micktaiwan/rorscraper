@@ -1,7 +1,7 @@
 <div class="title"><%=scrapd.name%></div>
 <%=link_to_remote(I18n.t('edit'), :url=>{:controller=>'scrap', :action=>'edit', :id=>scrapd.id}, :update=>'scrap_'+scrapd.id.to_s) %>
 <%=link_to_remote(I18n.t('delete'), :url=>{:controller=>'scrap', :action=>'delete', :id=>scrapd.id}, :confirm=>'delete?', :success=>"$('scrap_#{scrapd.id.to_s}').blindUp()") %>
-<%=link_to_remote(I18n.t('delete_history'), :url=>{:controller=>'scrap', :action=>'delete_history', :id=>scrapd.id}, :confirm=>'delete history for this scrap?', :update=>'scrap_'+scrapd.id.to_s, :loading=>"$('s#{scrapd.id}').hide()") %>
+<%=link_to_remote(I18n.t('delete_history'), {:url=>{:controller=>'scrap', :action=>'delete_history', :id=>scrapd.id}, :confirm=>'delete history for this scrap?', :update=>'scrap_'+scrapd.id.to_s, :loading=>"$('dh#{scrapd.id}').hide()"},  {:id=>"dh"+scrapd.id.to_s}) %>
 <%=link_to(I18n.t('ext_link'), url_for(scrapd.url)) %>
 <%=link_to_remote(I18n.t('scrap'), {:url=>{:controller=>'scrap', :action=>'scrap', :id=>scrapd.id}, :update=>'scrap_'+scrapd.id.to_s, :loading=>"$('s#{scrapd.id}').hide()"}, {:id=>"s"+scrapd.id.to_s}) %>
 <% if scrapd.email_on_change %>
