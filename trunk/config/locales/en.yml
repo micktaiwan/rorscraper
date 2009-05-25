@@ -5,6 +5,7 @@ en:
   about: "About"
   add_scrap: "Add a scrap"
   delete: "delete"
+  delete_history: "delete history"
   edit: "edit"
   email: "Email"
   expl_email: "Your email is your login, and is also used for scraping alerts (configurable)"
