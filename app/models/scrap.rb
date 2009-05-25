@@ -2,7 +2,7 @@ require 'open-uri'
 require 'hpricot'
 
 class Scrap < ActiveRecord::Base
-  has_many :histories
+  has_many :histories,  :dependent => :destroy
   before_save :before
   belongs_to :user
   
@@ -53,7 +53,11 @@ private
   def add_scrap(value, error)
     value = value.strip
     self.last_scrap = self.scrap
-    self.scrap = value
+    if(value.size >= 64*1024)
+      self.scrap = 'scrap too big (> 64KB)'
+    else
+      self.scrap = value
+    end 
     self.error = error
     self.scrap_time = Time.now
     History.create(:scrap_id=>self.id, :scrap=>value) if self.scrap != self.last_scrap

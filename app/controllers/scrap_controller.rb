@@ -23,8 +23,15 @@ class ScrapController < ApplicationController
   end
   
   def delete
-    Scrap.delete(params['id'])
+    Scrap.destroy(params['id'])
     render(:nothing=>true)
+  end
+
+  def delete_history
+    id = params['id']
+    History.destroy_all(["scrap_id=?",id])
+    @scrapd = Scrap.find(id)
+    render(:partial=>'scrapd')
   end
 
   def scrap
